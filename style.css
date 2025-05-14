@@ -2,5 +2,49 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* outline: red solid 1px; */
   }
   
+form {
+    /* width: 700px; */
+}
+
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin: 20px;
+    width: 400px;
+    outline: rgb(224, 222, 222) solid 1px;
+    border-radius: 5px;
+    
+
+}
+
+.search-bar button,
+.search-bar input {
+    background-color: white;
+    border: none;
+    padding: 10px;
+    margin: 5px;
+    font-size: 1.3em;
+    transition: .3s ease-in-out;
+}
+
+.search-bar input:focus {
+    outline:  none;
+}
+
+.search-bar button:hover {
+    transform: scale(1.1);
+}
+
+.data-display {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* outline: 1px red solid; */
+    margin-left: 20px;
+    font-size: 1.2em;
+}

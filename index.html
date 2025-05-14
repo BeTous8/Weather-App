@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link href="style.css" rel="stylesheet">
-    <script src="app.js" defer></script>
+    <script type="module" src="app.js" defer></script>
 </head>
 <body>
-    
+    <form id="location">
+        <div class="search-bar">
+            <input type="text" id="loc" name="location" placeholder="Search city">
+            <button class="magnifying-glass" type="submit"><img class="mg" src="./assets/magnify.svg" width="30px" height="30px"></button>
+        </div>
+        
+    </form>
+    <div class="data-display" id="weather-container">
+        <div class="name"></div>
+        <div class="temp"></div>
+        <div class="description"></div>
+        <div class="humidity"></div>
+    </div>
 </body>
 </html>
