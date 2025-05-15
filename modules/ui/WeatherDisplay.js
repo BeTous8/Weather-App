@@ -65,7 +65,7 @@ export class WeatherDisplay {
             // const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
             // console.log('Icon URL:', iconUrl); // Add this line
 
-            const iconUrl = `../../assets/${iconCode}.svg`
+            const iconUrl = `./assets/${iconCode}.svg`
 
             const iconElement = document.createElement('img');
             iconElement.classList.add('icon');
