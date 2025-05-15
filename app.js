@@ -27,7 +27,7 @@ class AppLogic {
                 // Display it
                 this.weatherDisplay.displayWeather(cleanData);
             } catch (error) {
-                console.log('Error:', error)
+                // console.log('Error:', error)
             }
         }) 
     }

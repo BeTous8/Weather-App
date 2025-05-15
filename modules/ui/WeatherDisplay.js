@@ -7,20 +7,30 @@ export class WeatherDisplay {
         this.tempElement = this.display.querySelector('.temp');
         this.descElement = this.display.querySelector('.description');
         this.humidElement = this.display.querySelector('.humidity');
+        
     }
 
     displayLoading() {
         // check if spinner already exist
         if(this.display.querySelector('.loading-spinner')) return;
 
+        
         this.nameElement.style.display = 'none';
         this.tempElement.style.display = 'none';
         this.descElement.style.display = 'none';
         this.humidElement.style.display = 'none';
+        
+        const existingIcon = this.display.querySelector('.icon');
+        if (existingIcon) existingIcon.remove();
 
 
         // Show spinner
-        this.display.insertAdjacentHTML('beforeend', '<div class="loading-spinner">Loading...</div>');
+        this.display.insertAdjacentHTML('beforeend', `
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <div class="loading-text">Getting weather data...</div>
+            </div>
+        `);
     }
 
     displayWeather(cleanData) {
@@ -33,11 +43,12 @@ export class WeatherDisplay {
         this.descElement.style.display = 'block';
         this.humidElement.style.display = 'block';
         
+        
         //assign values to elements
         this.nameElement.textContent = cleanData.cityName;
         this.tempElement.textContent = cleanData.getCelsius() + '°C';
         this.descElement.textContent = cleanData.description;
-        this.humidElement.textContent =`humidity: ${cleanData.humidity}`;
+        this.humidElement.textContent =`humidity: ${cleanData.humidity}%`;
 
         this.displayWeatherIcon(cleanData.icon)
     }
@@ -46,7 +57,7 @@ export class WeatherDisplay {
         try {
             console.log('Icon code received:', iconCode); // Add this line
             // Remove existing icon
-            const existingIcon = this.display.querySelector('img');
+            const existingIcon = this.display.querySelector('.icon');
             if (existingIcon) existingIcon.remove();
 
             
