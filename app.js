@@ -18,7 +18,7 @@ class AppLogic {
     searchFlow() {
         this.searchForm.form.addEventListener('citySearch', async (event) => {
             const cityName = event.detail.cityName;
-        
+            this.weatherDisplay.displayLoading()
             try {
                 // Get weather data
                 const CityRawData = await WeatherService.getWeatherByCity((cityName));

@@ -42,9 +42,38 @@ form {
 
 .data-display {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items:flex-start;
+    gap: 20px;
+    max-width: fit-content;
+    /* outline: 1px red solid; */
+    margin-left: 30px;
+    padding: 20px;
+    font-size: 1.2em;
+    background-color: rgb(231, 232, 240);
+    color: rgb(3, 22, 49);
+    border-radius: 8px;
+}
+
+.text-display {
+    display: flex;
     flex-direction: column;
     gap: 10px;
     /* outline: 1px red solid; */
-    margin-left: 20px;
-    font-size: 1.2em;
+    
+}
+
+.text-display .temp {
+    font-size: 1.5em;
+}
+
+.img-display {
+    
+    /* outline: 1px red solid; */
+    
+}
+
+.icon {
+    fill: #ff6b35
 }

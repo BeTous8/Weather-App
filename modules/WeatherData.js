@@ -7,6 +7,8 @@ export class WeatherData {
         this.temperature = rawApiData.main.temp;
         this.description = rawApiData.weather[0].description;
         this.humidity = rawApiData.main.humidity;
+        this.icon = rawApiData.weather[0].icon;
+        console.log('Weather info:', rawApiData.weather[0]);
     }
 
     getCelsius() {
