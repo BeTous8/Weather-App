@@ -8,7 +8,7 @@ export class SearchForm {
     handleSubmit(event) {
         event.preventDefault();
 
-        const input = this.form.querySelector('#loc').value;
+        const input = this.form.querySelector('#loc').value.trim();
 
         const searchEvent = new CustomEvent('citySearch', {
             detail: {cityName: input}

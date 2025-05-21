@@ -18,6 +18,10 @@ class AppLogic {
     searchFlow() {
         this.searchForm.form.addEventListener('citySearch', async (event) => {
             const cityName = event.detail.cityName;
+            if (!cityName.trim()) {
+                this.weatherDisplay.displayError('Please Enter a City Name')
+                return;
+            }
             this.weatherDisplay.displayLoading()
             try {
                 // Get weather data
@@ -27,7 +31,11 @@ class AppLogic {
                 // Display it
                 this.weatherDisplay.displayWeather(cleanData);
             } catch (error) {
-                // console.log('Error:', error)
+                console.log('Error:', error)
+
+                if (error.message.includes('404')) {
+                    this.weatherDisplay.displayError(`City "${cityName}" not found. Please check spelling and try again.`);
+                }
             }
         }) 
     }

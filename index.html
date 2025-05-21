@@ -8,24 +8,36 @@
     <script type="module" src="app.js" defer></script>
 </head>
 <body>
-    <form id="location">
-        <div class="search-bar">
-            <input type="text" id="loc" name="location" placeholder="Search city">
-            <button class="magnifying-glass" type="submit"><img class="mg" src="./assets/magnify.svg" width="30px" height="30px"></button>
+    <div class="top-part">
+        <form id="location">
+            <div class="search-bar">
+                <input type="text" id="loc" name="location" placeholder="Search city">
+                <button class="magnifying-glass" type="submit"><img class="mg" src="./assets/magnify.svg" width="30px" height="30px"></button>
+            </div>
+            
+        </form>
+        <div class="temp-section">
+            <div class="temp-toggle">
+                <div class="slider"></div>
+                <button class="temp-btn celsius active" data-unit="celsius">°C</button>
+                <button class="temp-btn fahrenheit" data-unit="fahrenheit">°F</button>
+            </div>
         </div>
-        
-    </form>
-    <div class="data-display" id="weather-container">
-        <div class="text-display">
-            <div class="name"></div>
-            <div class="temp"></div>
-            <div class="description"></div>
-            <div class="humidity"></div>
-        </div>
-        <div class="img-display">
-            <div class="icon"></div>
-        </div>
-        
     </div>
+    <div class="bottom-part">
+        <div class="data-display" id="weather-container">
+            <div class="text-display">
+                <div class="name"></div>
+                <div class="temp"></div>
+                <div class="description"></div>
+                <div class="humidity"></div>
+            </div>
+            <div class="img-display">
+                <div class="icon"></div>
+            </div>
+            
+        </div>
+    </div>
+    
 </body>
 </html>
