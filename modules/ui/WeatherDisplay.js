@@ -3,6 +3,7 @@
 export class WeatherDisplay {
     constructor(displayClass) {
         this.display = document.querySelector(displayClass);
+        this.nowElement = this.display.querySelector('.now')
         this.nameElement = this.display.querySelector('.name');
         this.tempElement = this.display.querySelector('.temp');
         this.descElement = this.display.querySelector('.description');
@@ -13,6 +14,7 @@ export class WeatherDisplay {
         this.fahrenheitBtn = document.querySelector('.temp-btn.fahrenheit')
 
         this.currentWeatherData = null;
+        this.display.style.display = 'none'
 
         if (this.celsiusBtn && this.fahrenheitBtn) {
             this.celsiusBtn.addEventListener('click', () => this.toggleTemperatureUnit('celsius'));
@@ -60,6 +62,7 @@ export class WeatherDisplay {
         // check if spinner already exist
         if(this.display.querySelector('.loading-spinner')) return;
 
+        this.nowElement.style.display = 'none';
         this.nameElement.style.display = 'none';
         this.tempElement.style.display = 'none';
         this.descElement.style.display = 'none';
@@ -85,6 +88,8 @@ export class WeatherDisplay {
         this.currentWeatherData = cleanData;
 
         // Show elements
+        this.display.style.display = 'flex'
+        this.nowElement.style.display = 'block';
         this.nameElement.style.display = 'block';
         this.tempElement.style.display = 'block';
         this.descElement.style.display = 'block';
@@ -92,6 +97,7 @@ export class WeatherDisplay {
         
         
         //assign values to elements
+        this.nowElement.textContent = 'Today';
         this.nameElement.textContent = cleanData.cityName;
         this.tempElement.textContent = cleanData.getCelsius() + '°C';
         this.descElement.textContent = cleanData.description;
@@ -150,5 +156,36 @@ export class WeatherDisplay {
             <p>${message}</p>
         </div>
         `
+    }
+
+    // displayHourlyForecast(cleanData) {
+    //     nextFiveDays = cleanData.getN
+    // }
+
+
+
+    displayDailyForecast(cleanData) {
+        console.log(cleanData);
+        const daysContainer = document.querySelector('.days-display');
+
+        if (daysContainer) daysContainer.innerHTML = ''
+
+        cleanData.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.classList.add('day-cards')
+            card.innerHTML = `
+                <div class='for-date'>${item.getDayName()}</div>
+                <div class='for-date'>${item.getDateString()}</div>
+                <img class='for-icon' src='./assets/${item.icon}.svg' width='60' height='60'>
+                <div class='for-temp'>${item.getCelsius() + '°C'}</div>
+                <div class='for-description'>${item.description}</div>
+                <div class='for-humidity'>humidity: ${item.humidity}%</div>
+        `;
+        daysContainer.appendChild(card)
+        })
+        
+        
+        
+
     }
 }

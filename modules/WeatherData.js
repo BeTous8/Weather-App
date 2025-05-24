@@ -1,4 +1,4 @@
-// import { WeatherService } from "./WeatherService";
+// import { WeatherService } from "./WeatherService.js";
 // import {rawApiData} from WeatherService
 
 export class WeatherData {
@@ -9,6 +9,13 @@ export class WeatherData {
         this.humidity = rawApiData.main.humidity;
         this.icon = rawApiData.weather[0].icon;
         console.log('Weather info:', rawApiData.weather[0]);
+
+        if (rawApiData.dt) {
+            this.date = new Date(rawApiData.dt * 1000);
+            this.dateString = this.date.toLocaleDateString();
+            this.dayName = this.date.toLocaleDateString('en-US', {weekday: 'long'});
+            console.log(`date is ${this.date}, dateString is ${this.dateString}, dayName is ${this.dayName}`);
+        }
     }
 
     getCelsius() {
@@ -25,5 +32,17 @@ export class WeatherData {
     
     getHumidity() {
         return this.humidity;
+    }
+
+    getDate() {
+        return this.date;
+    }
+    
+    getDateString() {
+        return this.dateString;
+    }
+    
+    getDayName() {
+        return this.dayName;
     }
 }

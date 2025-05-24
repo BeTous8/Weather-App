@@ -1,5 +1,6 @@
 import { WeatherService } from "./modules/WeatherService.js";
 import { WeatherData } from "./modules/WeatherData.js";
+import {ForecastData} from "./modules/ForecastData.js";
 import { SearchForm } from "./modules/ui/SearchForm.js";
 import { WeatherDisplay } from "./modules/ui/WeatherDisplay.js"
 
@@ -24,12 +25,27 @@ class AppLogic {
             }
             this.weatherDisplay.displayLoading()
             try {
-                // Get weather data
-                const CityRawData = await WeatherService.getWeatherByCity((cityName));
-                const cleanData = new WeatherData(CityRawData);
+                // Get current weather data
+                const currentRawData = await WeatherService.getWeatherByCity((cityName));
+                const cleanCurrentData = new WeatherData(currentRawData);
+
+                const lat = currentRawData.coord.lat;
+                const lon = currentRawData.coord.lon;
+
+                // Get forecast weather data
+                const forecastRawData = await WeatherService.getForecastByCoords(lat, lon);
+                console.log('Forecast raw data:', forecastRawData);
+                const cleanForecastData = new ForecastData(forecastRawData);
         
-                // Display it
-                this.weatherDisplay.displayWeather(cleanData);
+                // Display today's data
+                this.weatherDisplay.displayWeather(cleanCurrentData);
+                //Display Next 24 hours
+                // this.weatherDisplay.displayHourlyForecast(cleanForecastData.getNext24Hours());
+                // Display Next 5 days
+                this.weatherDisplay.displayDailyForecast(cleanForecastData.getNextFiveDays());
+                
+
+
             } catch (error) {
                 console.log('Error:', error)
 
