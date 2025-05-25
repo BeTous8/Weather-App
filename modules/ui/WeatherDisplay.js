@@ -59,6 +59,7 @@ export class WeatherDisplay {
 
 
     displayLoading() {
+
         // check if spinner already exist
         if(this.display.querySelector('.loading-spinner')) return;
 
@@ -136,6 +137,9 @@ export class WeatherDisplay {
     displayError(message) {
         const spinner = this.display.querySelector('.loading-spinner');
         if (spinner) spinner.remove();
+
+        const daysContainer = document.querySelector('.days-display');
+        if (daysContainer) daysContainer.innerHTML = '';
 
         this.nameElement.style.display = 'block';
 

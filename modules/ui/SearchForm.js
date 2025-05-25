@@ -17,6 +17,6 @@ export class SearchForm {
         this.form.dispatchEvent(searchEvent);
 
         this.form.querySelector('#loc').value = '';
+        this.form.querySelector('#loc').focus();
     }
-
 }

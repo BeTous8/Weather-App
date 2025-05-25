@@ -8,13 +8,13 @@ export class WeatherData {
         this.description = rawApiData.weather[0].description;
         this.humidity = rawApiData.main.humidity;
         this.icon = rawApiData.weather[0].icon;
-        console.log('Weather info:', rawApiData.weather[0]);
+        // console.log('Weather info:', rawApiData.weather[0]);
 
         if (rawApiData.dt) {
             this.date = new Date(rawApiData.dt * 1000);
             this.dateString = this.date.toLocaleDateString();
-            this.dayName = this.date.toLocaleDateString('en-US', {weekday: 'long'});
-            console.log(`date is ${this.date}, dateString is ${this.dateString}, dayName is ${this.dayName}`);
+            this.dayName = this.date.toLocaleDateString('en-US', {weekday: 'short'});
+            console.log(`date is ${this.date}, dateString is ${this.dateString}, dayName is ${this.dayName}`); //date is Wed May 28 2025 11:00:00 GMT-0700 (Pacific Daylight Time), dateString is 5/28/2025, dayName is Wed
         }
     }
 

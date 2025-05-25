@@ -8,6 +8,7 @@ export class ForecastData {
 
         // Debug: Check what we're working with
         console.log('Total forecast items:', this.forecastList.length);
+        console.log('Total forecast items:', this.rawData);
         console.log('First few items:', this.forecastList.slice(0, 3));
 
         // Debug: Check timestamps and hours
@@ -33,7 +34,7 @@ export class ForecastData {
                 // Take the first midday forecast for each day
                 if (!dailyForecasts[dateString] && index > 7) {
                     dailyForecasts[dateString] = item;
-                    console.log("accepted item: ", item)
+                    console.log("accepted item: ", dailyForecasts)
                 }
             }
         });
