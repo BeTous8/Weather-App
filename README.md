@@ -2,7 +2,7 @@
 
 A sleek, responsive weather application that allows users to check current weather conditions for any city around the world.
 
-![Weather App Screenshot](./images/WeatherAppScreenshot.png)
+![Weather App Screenshot](./images/WeatherAppSS.png)
 
 ## Features
 
